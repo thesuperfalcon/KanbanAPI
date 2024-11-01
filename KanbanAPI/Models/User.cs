@@ -2,16 +2,12 @@
 
 public class User
 {
-    public string UserId { get; set; }
+    public string UserId { get; set; } = Guid.NewGuid().ToString(); // Initialize UserId
     public string Username { get; set; }
     public string Password { get; set; }
-    public virtual ICollection<BoardUser> BoardUsers { get; set; }
-    public virtual ICollection<TaskUser> TaskUsers { get; set; }
-    public virtual ICollection<Comment> Comments { get; set; }
-    public virtual ICollection<Board> Boards { get; set; }
-
-    public User()
-    {
-        UserId = Guid.NewGuid().ToString();         
-    }
+        
+    public virtual ICollection<BoardUser> BoardUsers { get; set; } = new List<BoardUser>();
+    public virtual ICollection<TaskUser> TaskUsers { get; set; } = new List<TaskUser>();
+    public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
+    public virtual ICollection<Board> Boards { get; set; } = new List<Board>();
 }

@@ -6,5 +6,6 @@ public class Column
     public string Name { get; set; }
     public int Position { get; set; }
     public string BoardId { get; set; }
+        
     public virtual Board Board { get; set; }
 }
