@@ -1,4 +1,5 @@
 ﻿using KanbanAPI.Data;
+using KanbanAPI.Dto;
 using Microsoft.AspNetCore.Mvc;
 using KanbanAPI.Models;
 using Microsoft.EntityFrameworkCore;
@@ -8,7 +9,7 @@ namespace KanbanAPI.Controller;
 
 [Route("api/[controller]")]
 [ApiController]
-public class UserController : Microsoft.AspNetCore.Mvc.Controller
+public class UserController : ControllerBase
 {
     private readonly KanbanContext _context;
 
@@ -23,9 +24,15 @@ public class UserController : Microsoft.AspNetCore.Mvc.Controller
     }
 
     [HttpPost]
-    public async Task<ActionResult<User>> PostUser(User user)
+    public async Task<ActionResult<User>> PostUser(UserDto userDto)
     {
-        _context.Users.Add(user);
+        var user = new User()
+        {
+            Username = userDto.UserName,
+            Password = userDto.Password,
+        };
+        
+        await _context.Users.AddAsync(user);
         
         await _context.SaveChangesAsync();
         
