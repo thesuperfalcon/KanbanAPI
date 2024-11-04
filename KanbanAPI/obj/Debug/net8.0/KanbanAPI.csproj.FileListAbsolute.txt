@@ -167,3 +167,4 @@ C:\Users\tinti\RiderProjects\KanbanAPI\KanbanAPI\obj\Debug\net8.0\refint\KanbanA
 C:\Users\tinti\RiderProjects\KanbanAPI\KanbanAPI\obj\Debug\net8.0\KanbanAPI.pdb
 C:\Users\tinti\RiderProjects\KanbanAPI\KanbanAPI\obj\Debug\net8.0\KanbanAPI.genruntimeconfig.cache
 C:\Users\tinti\RiderProjects\KanbanAPI\KanbanAPI\obj\Debug\net8.0\ref\KanbanAPI.dll
+C:\Users\tinti\RiderProjects\KanbanAPI\KanbanAPI\obj\Debug\net8.0\KanbanAPI.sourcelink.json
