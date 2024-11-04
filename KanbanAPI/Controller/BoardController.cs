@@ -34,6 +34,16 @@ public class BoardController : ControllerBase
         await _context.Boards.AddAsync(board);
         
         await _context.SaveChangesAsync();
+
+        var boardUser = new BoardUser()
+        {
+            UserId = board.OwnerId,
+            BoardId = board.Id,
+        };
+        
+        await _context.BoardUsers.AddAsync(boardUser);
+        
+        await _context.SaveChangesAsync();
                 
         return CreatedAtAction("GetBoard", new { id = board.Id }, board);
     }
