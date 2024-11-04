@@ -11,5 +11,3 @@ public class Board
     public virtual ICollection<BoardUser> BoardUsers { get; set; } = new List<BoardUser>();
 }
 
-wjfewofjewfjiewofj
-smdklwsmdwd
