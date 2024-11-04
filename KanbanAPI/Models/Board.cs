@@ -10,3 +10,4 @@ public class Board
     public virtual ICollection<Column> Columns { get; set; } = new List<Column>();
     public virtual ICollection<BoardUser> BoardUsers { get; set; } = new List<BoardUser>();
 }
+
