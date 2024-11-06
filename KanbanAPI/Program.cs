@@ -1,4 +1,5 @@
 using KanbanAPI.Data;
+using KanbanAPI.Helpers;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,6 +24,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+builder.Services.AddScoped<PositionHelper>();
 
 app.UseHttpsRedirection();
 
