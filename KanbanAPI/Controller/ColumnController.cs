@@ -26,7 +26,7 @@ public class ColumnController : ControllerBase
         return await _context.Columns.ToListAsync();
     }
 
-    [HttpGet("id")]
+    [HttpGet("{id}")]
     public async Task<ActionResult<Column>> GetColumn(int id)
     {
         return await _context.Columns.FindAsync(id);
@@ -47,5 +47,25 @@ public class ColumnController : ControllerBase
         await _context.SaveChangesAsync();
         
         return CreatedAtAction("GetColumn", new { id = column.Id }, column);
+    }
+
+    [HttpPut("{id}")]
+    public async Task<ActionResult<Column>> Edit(int id, ColumnDto columnDto)
+    {
+        var existingColumn = await _context.Columns.FindAsync(id);
+    
+        if (existingColumn == null)
+        {
+            return NotFound(); 
+        }
+
+        existingColumn.Name = columnDto.Name;
+        existingColumn.BoardId = columnDto.BorderId;
+
+        existingColumn.Position = await _positionHelper.GetColumnPosition(columnDto.BorderId);
+
+        await _context.SaveChangesAsync();
+    
+        return NoContent(); 
     }
 }

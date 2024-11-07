@@ -15,6 +15,7 @@ builder.Services.AddControllers()
     });
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<PositionHelper>();
 
 var app = builder.Build();
 
@@ -25,7 +26,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-builder.Services.AddScoped<PositionHelper>();
 
 app.UseHttpsRedirection();
 

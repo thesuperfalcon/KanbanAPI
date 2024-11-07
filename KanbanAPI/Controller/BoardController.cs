@@ -59,4 +59,21 @@ public class BoardController : ControllerBase
 
         return board;
     }
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> EditBoard(string id, BoardDto boardDto)
+    {
+        var existingBoard = await _context.Boards.FindAsync(id);
+    
+        if (existingBoard == null)
+        {
+            return NotFound(); 
+        }
+
+        existingBoard.Name = existingBoard.Name;
+
+        await _context.SaveChangesAsync();
+    
+        return CreatedAtAction("GetBoard", new { id = existingBoard.Id }, existingBoard);
+    }
 }
