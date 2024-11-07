@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KanbanAPI", "KanbanAPI\KanbanAPI.csproj", "{BC586F99-0A35-46A1-9519-51BF8919C49E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KanbanAPI.Tests", "KanbanAPI.Tests\KanbanAPI.Tests.csproj", "{3D5394AB-DD31-4BC2-922A-B16B12340689}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{BC586F99-0A35-46A1-9519-51BF8919C49E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC586F99-0A35-46A1-9519-51BF8919C49E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC586F99-0A35-46A1-9519-51BF8919C49E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D5394AB-DD31-4BC2-922A-B16B12340689}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D5394AB-DD31-4BC2-922A-B16B12340689}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D5394AB-DD31-4BC2-922A-B16B12340689}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D5394AB-DD31-4BC2-922A-B16B12340689}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
