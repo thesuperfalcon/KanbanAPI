@@ -1,19 +1,10 @@
-name: Context/Variable Practice
-
-on: 
-  workflow_dispatch:
-    inputs:
-      number:
-        description: "Enter a number"
-        required: true
-        default: 1
-
-env:
-  GLOBAL_VAR: "Detta är en global variabel"
-
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        dotnet-version: [3.1.x, 5.0.x, 6.0.x]
     if: ${{ github.event.inputs.number > 7 }}
 
     env:
@@ -25,6 +16,8 @@ jobs:
 
       - name: Set up .NET
         uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
 
       - name: Restore dependencies
         run: dotnet restore
@@ -40,10 +33,7 @@ jobs:
           echo "Globala variabler:"
           echo "GLOBAL_VAR=${GLOBAL_VAR}"
           echo "JOB_VAR=${JOB_VAR}"
-
-          echo "Steg-specifika variabler:"
           STEP_VAR="Detta är en steg-variabel"
           echo "STEP_VAR=${STEP_VAR}"
-
           echo "Alla miljövariabler:"
-          env  # Skriver ut alla miljövariabler som är tillgängliga i detta steg
+          env
