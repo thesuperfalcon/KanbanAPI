@@ -1,0 +1,12 @@
+name: Context_Variable_Practice
+
+on: workflow_dispatch
+  jobs:
+    builds: 
+      runs-on: ubuntu-latest
+
+      steps:
+        - uses: actions/checkout@v4
+        - name: Build
+        - run: dotnet run
+        
