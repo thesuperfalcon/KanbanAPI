@@ -2,13 +2,16 @@ name: Context/Variable Practice
 
 on: 
   workflow_dispatch:
+    inputs:
+      number:
+        description: "Enter a number"
+        required: true
+        default: 1
   
-env: 
-  number: 1
-
 jobs:
   build:
     runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.number > 7 }}
 
     steps:
       - name: Checkout code
@@ -21,7 +24,6 @@ jobs:
         run: dotnet restore
 
       - name: Build solution
-        if: ${{ env.number > 7 }}
         run: dotnet build --no-restore --configuration Release
 
       - name: Run tests
