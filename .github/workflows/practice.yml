@@ -7,11 +7,17 @@ on:
         description: "Enter a number"
         required: true
         default: 1
-  
+
+env:
+  GLOBAL_VAR: "Detta är en global variabel"
+
 jobs:
   build:
     runs-on: ubuntu-latest
     if: ${{ github.event.inputs.number > 7 }}
+
+    env:
+      JOB_VAR: "Detta är en job-variabel"
 
     steps:
       - name: Checkout code
@@ -28,3 +34,16 @@ jobs:
 
       - name: Run tests
         run: dotnet test --no-build --configuration Release
+
+      - name: Print environment variables
+        run: |
+          echo "Globala variabler:"
+          echo "GLOBAL_VAR=${GLOBAL_VAR}"
+          echo "JOB_VAR=${JOB_VAR}"
+
+          echo "Steg-specifika variabler:"
+          STEP_VAR="Detta är en steg-variabel"
+          echo "STEP_VAR=${STEP_VAR}"
+
+          echo "Alla miljövariabler:"
+          env  # Skriver ut alla miljövariabler som är tillgängliga i detta steg
