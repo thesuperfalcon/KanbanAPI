@@ -1,11 +1,24 @@
+name: Context/Variable Practice
+
+on: 
+  workflow_dispatch:
+    inputs:
+      number:
+        description: "Enter a number to trigger the build (must be greater than 7)"
+        required: true
+        default: 1
+
+env:
+  GLOBAL_VAR: "Detta är en global variabel"
+
 jobs:
   build:
     runs-on: ${{ matrix.os }}
+    if: ${{ github.event.inputs.number && github.event.inputs.number > 7 }} # ensures number is required and > 7
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
         dotnet-version: [3.1.x, 5.0.x, 6.0.x]
-    if: ${{ github.event.inputs.number > 7 }}
 
     env:
       JOB_VAR: "Detta är en job-variabel"
