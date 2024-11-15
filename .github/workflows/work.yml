@@ -13,9 +13,7 @@ jobs:
       - run: echo "${{ vars.MIN_VARIABEL }}"
       - run: echo $MIN_VARIABEL
 
-      - name: Setup
-      - run: actions/checkout@v4
-
       - name: Build
+      - uses: actions/checkout@v4
       - run: dotnet run
       
