@@ -1,0 +1,17 @@
+name: test
+on: 
+  workflow-dispatch
+
+jobs: 
+  build:
+    runs-on: ubuntu-latest
+    
+    steps: 
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+
+      - name: Build
+        run: dotnet build
