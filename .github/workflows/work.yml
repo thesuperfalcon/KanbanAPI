@@ -1,16 +1,21 @@
-name: test
+name: test-enviroments
 on: workflow_dispatch
-
-jobs: 
-  build:
+jobs:
+  print-my-variable:
     runs-on: ubuntu-latest
-    
-    steps: 
-      - name: Checkout code
-        uses: actions/checkout@v2
-        
-      - name: Set up .NET
-        uses: actions/setup-dotnet@v4
+    # Define GITHUB environment to use
+    environment: Test
+    # Declare environment variables
+    env:
+      MIN_VARIABEL: ${{ vars.MIN_VARIABEL }} 
+    steps:
+      - name: Echo Enviroment Variable
+      - run: echo "${{ vars.MIN_VARIABEL }}"
+      - run: echo $MIN_VARIABEL
+
+      - name: Setup
+      - run: actions/checkout@v4
 
       - name: Build
-        run: dotnet build
+      - run: dotnet run
+      
