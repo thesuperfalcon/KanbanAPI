@@ -3,17 +3,17 @@ on: workflow_dispatch
 jobs:
   print-my-variable:
     runs-on: ubuntu-latest
-    # Define GITHUB environment to use
     environment: Test
-    # Declare environment variables
     env:
-      MIN_VARIABEL: ${{ vars.MIN_VARIABEL }} 
+      MIN_VARIABLE: ${{ vars.MIN_VARIABLE }} 
     steps:
-      - name: Echo Enviroment Variable
-      - run: echo "${{ vars.MIN_VARIABEL }}"
-      - run: echo $MIN_VARIABEL
+      - name: Echo Environment Variable
+        run: |
+          echo "${{ vars.MIN_VARIABLE }}"
+          echo $MIN_VARIABLE
+
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
       - name: Build
-      - uses: actions/checkout@v4
-      - run: dotnet run
-      
+        run: dotnet run
