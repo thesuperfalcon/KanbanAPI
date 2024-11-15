@@ -5,15 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     environment: Test
     env:
-      MIN_VARIABLE: ${{ vars.MIN_VARIABLE }} 
+      MIN_VARIABLE: ${{ vars.MY_VARIABLE }} 
     steps:
       - name: Echo Environment Variable
         run: |
-          echo "${{ vars.MIN_VARIABLE }}"
+          echo "${{ vars.MY_VARIABLE }}"
           echo $MIN_VARIABLE
-
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Build
-        run: dotnet run
