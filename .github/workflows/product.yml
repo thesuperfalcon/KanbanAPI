@@ -2,35 +2,45 @@ name: Testing Stuff
 
 on:
   push:
-    branches: [main, master]
+    branches: 
+      - main
+      - master
   pull_request:
-    branches: [main, master]
+    branches: 
+      - main
+      - master
   workflow_dispatch:
 
 jobs:
   os_matrix:
-    runs-on: ${{matrix.os}}
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest]
-        dotnet-version: [6.0.x, 7.0.x, 8.0.x]
+        os: 
+          - ubuntu-latest
+          - windows-latest
+        dotnet-version: 
+          - 6.0.x
+          - 7.0.x
+          - 8.0.x
 
     steps:
-    - name: Checkout code
-      run: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Display dotnet version
-      run: dotnet --version
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
 
-    - name: Install dependencies
-      run: dotnet restore
+      - name: Display dotnet version
+        run: dotnet --version
+
+      - name: Install dependencies
+        run: dotnet restore
       
-    - name: Build
-      run: dotnet build
+      - name: Build
+        run: dotnet build
       
-    - name: Test with the dotnet CLI
-      run: dotnet test
-
-    
-    
-        
+      - name: Test with the dotnet CLI
+        run: dotnet test
